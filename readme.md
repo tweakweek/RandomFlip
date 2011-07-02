@@ -1,7 +1,8 @@
 RandomFlip
 ==============
+
 Tweak for iPhone/iPod/iPad that adds a flip animation to random icons on SpringBoard, giving some life to static icons.
--------------------------------
+
 
 by Elias Limneos
 ----------------
