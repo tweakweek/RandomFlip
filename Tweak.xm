@@ -2,29 +2,50 @@
 #import <substrate.h>
 #import <UIKit/UIView.h>
 
+@interface SpringBoard (iOS4)
+- (SBDisplay *)_accessibilityTopDisplay;
+@end
+
+@interface SBIconController (iOS4)
+- (SBIconList *)currentRootIconList;
+- (id)dock;
+@end
+
+@interface SBIconListView : UIView
+- (NSArray *)icons;
+@end
+
+@interface SBDockIconListView : SBIconListView
+@end
+
+@interface SBIcon (iOS4)
+- (BOOL)isGrabbed;
+- (UIImageView *)iconImageView;
+@end
+
 static BOOL hasAnimatingIcon=0;
 static BOOL hasUnscattered=NO;
 
 @interface RandomIconFlipManager : NSObject 
-+(id)sharedInstance;
++(RandomIconFlipManager *)sharedFlipManager;
 -(BOOL)isSpringBoardVisible;
 -(void)performRandomAnimation;
 @end
 
 @implementation RandomIconFlipManager
-static id sharedInstance=nil;
--(id)init{
-	sharedInstance=[super init];
-	return sharedInstance;
-}
-+(id)sharedInstance{
-	if (!sharedInstance){
-		[[self alloc] init];
+static RandomIconFlipManager *sharedManager;
++ (void)initialize
+{
+	if (self == [RandomIconFlipManager class]) {
+		sharedManager = [[self alloc] init];
 	}
-	return sharedInstance;
+}
++ (RandomIconFlipManager *)sharedFlipManager
+{
+	return sharedManager;
 }
 -(BOOL)isSpringBoardVisible{
-	return ![[objc_getClass("SpringBoard") sharedApplication] _accessibilityTopDisplay];
+	return ![(SpringBoard *)[objc_getClass("SpringBoard") sharedApplication] _accessibilityTopDisplay];
 }
 -(void)clearAnimatingIconState{
 	hasAnimatingIcon=0;
@@ -73,7 +94,7 @@ static id sharedInstance=nil;
 -(void)finishedUnscattering{
 	%orig;
 	if (!hasUnscattered)
-		[[RandomIconFlipManager sharedInstance] performRandomAnimation];	
+		[[RandomIconFlipManager sharedFlipManager] performRandomAnimation];	
 	hasUnscattered=YES;
 }
 %end
