@@ -1,7 +1,4 @@
-#import <SBIcon.h>
-#import <SBIconController.h>
-#import <SBIconListView.h>
-#import <SpringBoard-Class.h>
+#import <SpringBoard/SpringBoard.h>
 #import <substrate.h>
 #import <UIKit/UIView.h>
 
