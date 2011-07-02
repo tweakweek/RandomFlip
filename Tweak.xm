@@ -7,7 +7,7 @@
 @end
 
 @interface SBIconController (iOS4)
-- (SBIconList *)currentRootIconList;
+- (SBIconListView *)currentRootIconList;
 - (id)dock;
 @end
 
