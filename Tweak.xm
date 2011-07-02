@@ -6,13 +6,13 @@
 - (SBDisplay *)_accessibilityTopDisplay;
 @end
 
+@interface SBIconListView : UIView
+- (NSArray *)icons;
+@end
+
 @interface SBIconController (iOS4)
 - (SBIconListView *)currentRootIconList;
 - (id)dock;
-@end
-
-@interface SBIconListView : UIView
-- (NSArray *)icons;
 @end
 
 @interface SBDockIconListView : SBIconListView
