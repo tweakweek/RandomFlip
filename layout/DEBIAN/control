@@ -1,0 +1,9 @@
+Package: net.limneos.randomiconsflip
+Name: Random Icon Flip
+Depends: mobilesubstrate, firmware (>= 4.0)
+Version: 0.1
+Architecture: iphoneos-arm
+Description: Randomly Flips SB Icons
+Maintainer: Elias Limneos
+Author: Elias Limneos
+Section: Tweaks
